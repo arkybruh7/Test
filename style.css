@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, #0a0a2e, #1a1a4f);
+    min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Candle Animation */
+.candles-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 2rem;
+    z-index: 1000;
+}
+
+.candle {
+    width: 30px;
+    height: 100px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+.flame {
+    width: 15px;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffd700, #ff4500);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.1s infinite, blow-out 10s forwards;
+    filter: drop-shadow(0 0 10px #ff4500);
+}
+
+/* Animations */
+@keyframes flicker {
+    0%, 100% { transform: translateX(-50%) scaleY(1); }
+    50% { transform: translateX(-50%) scaleY(0.9); }
+}
+
+@keyframes blow-out {
+    90% { opacity: 1; }
+    100% { opacity: 0; height: 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Futuristic Message */
+.message {
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: message-pop 1s 10s forwards;
+}
+
+.message h1 {
+    color: #fff;
+    font-size: 3em;
+    text-shadow: 0 0 20px #00f3ff, 0 0 30px #00f3ff;
+    background: linear-gradient(45deg, #00f3ff, #0066ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes message-pop {
+    0% { opacity: 0; transform: translate(-50%, -40%); }
+    100% { opacity: 1; transform: translate(-50%, -50%); }
+  }
